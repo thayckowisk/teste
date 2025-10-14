@@ -33,30 +33,20 @@ def original(opcao):
 
 @st.cache_data
 def carregar_dados():
-    """Carrega dataset otimizado para deploy"""
+    """Carrega dataset local crop_yield.csv com 40.000 registros"""
     
-    # Tentar primeiro dataset pequeno (para Streamlit Cloud)
-    if os.path.exists("crop_yield_small.csv"):
-        try:
-            df = pd.read_csv("crop_yield_small.csv")
-            st.success(f"✅ Dataset OTIMIZADO: {len(df):,} registros carregados")
-            return df.dropna()
-        except Exception as e:
-            st.warning(f"⚠️ Erro no dataset otimizado: {e}")
-    
-    # Fallback para dataset completo (local)
     if os.path.exists("crop_yield.csv"):
         try:
             df = pd.read_csv("crop_yield.csv")
             if len(df) > 40000:
                 df = df.sample(n=40000, random_state=42)
-            st.success(f"✅ Dataset COMPLETO: {len(df):,} registros carregados")
+            st.success(f"✅ Dataset LOCAL: {len(df):,} registros carregados")
             return df.dropna()
         except Exception as e:
             st.error(f"❌ Erro ao carregar dataset: {e}")
             st.stop()
     
-    st.error("❌ Nenhum dataset encontrado na pasta!")
+    st.error("❌ Dataset crop_yield.csv não encontrado na pasta!")
     st.stop()
 
 class ModeloML:
