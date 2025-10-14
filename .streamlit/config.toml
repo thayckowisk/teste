@@ -1,0 +1,26 @@
+[theme]
+# Tema personalizado para o simulador agrícola
+primaryColor = "#4CAF50"          # Verde para botões principais
+backgroundColor = "#F8F9FA"       # Fundo claro e limpo
+secondaryBackgroundColor = "#E8F5E8"  # Verde muito claro para sidebars
+textColor = "#2E2E2E"            # Texto escuro para boa legibilidade
+font = "sans serif"              # Fonte moderna e limpa
+
+[server]
+# Configurações do servidor
+headless = false                 # Permite abrir automaticamente no navegador
+runOnSave = true                 # Recarrega automaticamente quando salvar
+port = 8508                      # Porta fixa para o simulador
+enableCORS = false               # Desabilita CORS para performance local
+enableXsrfProtection = false     # Desabilita proteção XSRF para desenvolvimento
+
+[browser]
+# Configurações do navegador
+serverAddress = "localhost"      # Endereço do servidor
+serverPort = 8508               # Porta consistente
+gatherUsageStats = false        # Não coletar estatísticas de uso
+
+[logger]
+# Configurações de log para desenvolvimento
+level = "info"                  # Nível de log informativo
+messageFormat = "%(asctime)s %(message)s"
